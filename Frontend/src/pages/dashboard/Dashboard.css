@@ -1,0 +1,15 @@
+.dashboard h1 {
+    color: #14213d;
+    margin-bottom: 10px;
+}
+
+.dashboard p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
