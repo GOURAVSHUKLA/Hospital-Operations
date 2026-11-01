@@ -1,0 +1,137 @@
+.navbar {
+
+    height: 75px;
+
+    background-color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+}
+
+.navbar-left h2 {
+
+    font-size: 20px;
+
+    color: #14213d;
+
+}
+
+.navbar-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+}
+
+.navbar-search {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background: #f1f4f9;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+}
+
+.navbar-search input {
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+}
+
+.notification-button {
+
+    position: relative;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 20px;
+
+    color: #14213d;
+
+    cursor: pointer;
+
+}
+
+.notification-dot {
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    width: 8px;
+
+    height: 8px;
+
+    background: red;
+
+    border-radius: 50%;
+
+}
+
+.admin-profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.profile-icon {
+
+    font-size: 35px;
+
+    color: #2878e3;
+
+}
+
+.admin-profile h4 {
+
+    font-size: 14px;
+
+    margin: 0;
+
+}
+
+.admin-profile p {
+
+    font-size: 11px;
+
+    color: gray;
+
+    margin: 0;
+
+}
