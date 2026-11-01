@@ -1,0 +1,49 @@
+.admin-layout {
+
+    min-height: 100vh;
+
+    background-color: #f4f7fc;
+
+}
+
+.admin-main {
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.admin-content {
+
+    padding: 30px;
+
+    flex: 1;
+
+}
+
+@media (max-width: 768px) {
+
+    .sidebar {
+
+        width: 200px;
+
+    }
+
+    .admin-main {
+
+        margin-left: 200px;
+
+    }
+
+    .navbar {
+
+        padding: 0 15px;
+
+    }
+
+}

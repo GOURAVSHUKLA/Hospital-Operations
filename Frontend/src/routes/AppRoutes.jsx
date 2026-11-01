@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Login from '../pages/auth/Login';
+import Dashboard from '../pages/dashboard/Dashboard';
+
 
 function AppRoutes() {
 
@@ -18,6 +20,13 @@ function AppRoutes() {
                 <Route
                     path="/login"
                     element={<Login />}
+                />
+                <Route
+
+                    path="/admin/dashboard"
+
+                    element={<Dashboard />}
+
                 />
 
             </Routes>
