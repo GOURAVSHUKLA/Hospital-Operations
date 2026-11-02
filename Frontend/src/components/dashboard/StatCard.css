@@ -1,4 +1,8 @@
+
 .stat-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     background-color: white;
     padding: 25px;
     border-radius: 10px;
@@ -6,13 +10,18 @@
     min-width: 180px;
 }
 
-.stat-card h3 {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 15px;
+.stat-card-icon {
+    font-size: 35px;
+    color: #14213d;
 }
 
-.stat-card h2 {
-    font-size: 28px;
+.stat-card-info h3 {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.stat-card-info h2 {
+    font-size: 26px;
     color: #14213d;
 }

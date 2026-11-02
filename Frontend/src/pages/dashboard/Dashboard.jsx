@@ -9,6 +9,8 @@ import {
   FaCalendarCheck,
   FaMoneyBillWave,
 } from "react-icons/fa";
+import AppointmentChart from '../../components/dashboard/AppointmentChart';
+import RecentAppointments from "../../components/dashboard/RecentAppointment";
 
 function Dashboard() {
   const dashboardStats = [
@@ -60,13 +62,15 @@ function Dashboard() {
         <div className="stats-container">
           {dashboardStats.map((stat) => (
             <StatCard
-              key={stat.id}
-              title={stat.title}
-              value={stat.value}
-              icon={stat.icon}
+            key={stat.id}
+            title={stat.title}
+            value={stat.value}
+            icon={stat.icon}
             />
           ))}
         </div>
+          <AppointmentChart/>
+          <RecentAppointments/>
       </div>
     </AdminLayout>
   );
