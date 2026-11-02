@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Login from '../pages/auth/Login';
 import Dashboard from '../pages/dashboard/Dashboard';
+import DoctorList from '../pages/doctors/DoctorList';
+import AddDoctor from '../pages/doctors/AddDoctor';
 
 
 function AppRoutes() {
@@ -28,6 +30,8 @@ function AppRoutes() {
                     element={<Dashboard />}
 
                 />
+                <Route path="/admin/doctors" element={<DoctorList />} />
+<Route path="/admin/doctors/add" element={<AddDoctor />} />
 
             </Routes>
 
