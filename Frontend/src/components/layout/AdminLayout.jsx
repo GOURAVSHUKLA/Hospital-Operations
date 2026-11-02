@@ -1,40 +1,31 @@
+import { Outlet } from 'react-router-dom';
+
 import Sidebar from './Sidebar';
-
 import Navbar from './Navbar';
-
 import Footer from './Footer';
 
 import './AdminLayout.css';
 
-function AdminLayout({ children }) {
+function AdminLayout() {
+  return (
+    <div className="admin-layout">
 
-    return (
+      <Sidebar />
 
-        <div className="admin-layout">
+      <div className="admin-main">
 
-            <Sidebar />
+        <Navbar />
 
+        <main className="admin-content">
+          <Outlet />
+        </main>
 
-            <div className="admin-main">
+        <Footer />
 
-                <Navbar />
+      </div>
 
-
-                <main className="admin-content">
-
-                    {children}
-
-                </main>
-
-
-                <Footer />
-
-            </div>
-
-        </div>
-
-    );
-
+    </div>
+  );
 }
 
 export default AdminLayout;

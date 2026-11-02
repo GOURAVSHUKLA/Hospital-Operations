@@ -1,6 +1,6 @@
-import AdminLayout from "../../components/layout/AdminLayout";
 import StatCard from "../../components/dashboard/StatCard";
 import "./Dashboard.css";
+
 import {
   FaUserMd,
   FaUsers,
@@ -9,7 +9,8 @@ import {
   FaCalendarCheck,
   FaMoneyBillWave,
 } from "react-icons/fa";
-import AppointmentChart from '../../components/dashboard/AppointmentChart';
+
+import AppointmentChart from "../../components/dashboard/AppointmentChart";
 import RecentAppointments from "../../components/dashboard/RecentAppointment";
 
 function Dashboard() {
@@ -53,26 +54,24 @@ function Dashboard() {
   ];
 
   return (
-    <AdminLayout>
-      <div className="dashboard">
-        <h1>Welcome to Admin Dashboard</h1>
+    <div className="dashboard">
+      <h1>Welcome to Admin Dashboard</h1>
+      <p>Manage your hospital operations from here.</p>
 
-        <p>Manage your hospital operations from here.</p>
-
-        <div className="stats-container">
-          {dashboardStats.map((stat) => (
-            <StatCard
+      <div className="stats-container">
+        {dashboardStats.map((stat) => (
+          <StatCard
             key={stat.id}
             title={stat.title}
             value={stat.value}
             icon={stat.icon}
-            />
-          ))}
-        </div>
-          <AppointmentChart/>
-          <RecentAppointments/>
+          />
+        ))}
       </div>
-    </AdminLayout>
+
+      <AppointmentChart />
+      <RecentAppointments />
+    </div>
   );
 }
 

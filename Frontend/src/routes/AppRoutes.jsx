@@ -1,44 +1,46 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+// Pages
 import Login from '../pages/auth/Login';
 import Dashboard from '../pages/dashboard/Dashboard';
 import DoctorList from '../pages/doctors/DoctorList';
 import AddDoctor from '../pages/doctors/AddDoctor';
+import EditDoctor from '../pages/doctors/EditDoctor';
+import DoctorDetails from '../pages/doctors/DoctorDetails';
 
+// Layout
+import AdminLayout from '../components/layout/AdminLayout';
 
 function AppRoutes() {
+  return (
+    <BrowserRouter>
+      <Routes>
 
-    return (
+        {/* Login */}
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
 
-        <BrowserRouter>
+        {/* Admin Layout */}
+        <Route
+          path="/admin"
+          element={<AdminLayout />}
+        >
+        <Route path="doctors/edit/:id" element={<EditDoctor />} />
 
-            <Routes>
+          {/* Dashboard */}
+          <Route path="dashboard" element={<Dashboard />} />
 
-                <Route
-                    path="/"
-                    element={<Login />}
-                />
+          {/* Doctors */}
+          <Route path="doctors" element={<DoctorList />} />
+          <Route path="doctors/add" element={<AddDoctor />} />
+          <Route path="doctors/edit/:id" element={<EditDoctor />} />
+          <Route path="doctors/details/:id" element={<DoctorDetails />} />
 
-                <Route
-                    path="/login"
-                    element={<Login />}
-                />
-                <Route
+        </Route>
 
-                    path="/admin/dashboard"
-
-                    element={<Dashboard />}
-
-                />
-                <Route path="/admin/doctors" element={<DoctorList />} />
-<Route path="/admin/doctors/add" element={<AddDoctor />} />
-
-            </Routes>
-
-        </BrowserRouter>
-
-    );
-
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default AppRoutes;
