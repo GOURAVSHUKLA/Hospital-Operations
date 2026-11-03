@@ -1,5 +1,7 @@
 .doctor-list-page {
+  width: 100%;
   padding: 25px;
+  box-sizing: border-box;
 }
 
 .doctor-list-header {
@@ -7,17 +9,19 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
+  gap: 20px;
 }
 
 .doctor-list-header h1 {
   color: #14213d;
   font-size: 26px;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
 }
 
 .doctor-list-header p {
   color: #777;
   font-size: 14px;
+  margin: 0;
 }
 
 .add-doctor-btn {
@@ -27,6 +31,7 @@
   padding: 12px 20px;
   border-radius: 6px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .doctor-search {
@@ -40,49 +45,74 @@
   border: 1px solid #ddd;
   border-radius: 6px;
   outline: none;
+  box-sizing: border-box;
 }
 
 .doctor-search input:focus {
   border-color: #14213d;
 }
 
+/* TABLE CONTAINER */
 .doctor-table-container {
   width: 100%;
+  max-width: 100%;
   overflow-x: auto;
   background: white;
   border-radius: 10px;
   padding: 15px;
+  box-sizing: border-box;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
-.doctor-table-container table {
+/* TABLE */
+.doctor-table {
   width: 100%;
-  min-width: 850px;
+  min-width: 1400px;
   border-collapse: collapse;
 }
 
-.doctor-table-container th,
-.doctor-table-container td {
+/* TABLE CELLS */
+.doctor-table th,
+.doctor-table td {
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid #eee;
   font-size: 14px;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 
-.doctor-table-container th {
+.doctor-table th {
   background: #f5f7fb;
   color: #14213d;
 }
 
-.doctor-table-container td {
+.doctor-table td {
   color: #555;
 }
 
+/* WORKING DAYS */
+.doctor-table th:nth-child(6),
+.doctor-table td:nth-child(6) {
+  min-width: 220px;
+  white-space: normal;
+  line-height: 1.6;
+}
+
+/* WORKING HOURS */
+.doctor-table th:nth-child(7),
+.doctor-table td:nth-child(7) {
+  min-width: 140px;
+}
+
+/* STATUS */
 .doctor-status {
+  display: inline-block;
   padding: 6px 10px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .doctor-status.available {
@@ -95,6 +125,12 @@
   color: #dc2626;
 }
 
+/* ACTION BUTTONS */
+.doctor-actions {
+  min-width: 190px;
+  white-space: nowrap;
+}
+
 .edit-btn,
 .delete-btn {
   padding: 7px 12px;
@@ -102,6 +138,7 @@
   border-radius: 5px;
   cursor: pointer;
   margin-right: 6px;
+  white-space: nowrap;
 }
 
 .edit-btn {
@@ -119,6 +156,7 @@
   padding: 25px !important;
 }
 
+/* RESPONSIVE */
 @media (max-width: 576px) {
   .doctor-list-page {
     padding: 15px;

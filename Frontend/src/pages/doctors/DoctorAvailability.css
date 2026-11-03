@@ -1,0 +1,133 @@
+.doctor-availability-page {
+  padding: 25px;
+  width: 100%;
+}
+
+.availability-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.availability-header h1 {
+  font-size: 26px;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.availability-header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.availability-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 850px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.availability-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.availability-card .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.availability-card .form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.availability-card input,
+.availability-card select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 14px;
+  outline: none;
+  background: #ffffff;
+}
+
+.availability-card input:focus,
+.availability-card select:focus {
+  border-color: #2563eb;
+}
+
+.days-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.day-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #f8fafc;
+}
+
+.day-option input {
+  width: auto;
+  cursor: pointer;
+  accent-color: #2563eb;
+}
+
+.day-option span {
+  font-size: 13px;
+  color: #334155;
+}
+
+.time-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.save-availability-btn {
+  width: fit-content;
+  padding: 12px 24px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.save-availability-btn:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+  .doctor-availability-page {
+    padding: 15px;
+  }
+
+  .availability-card {
+    padding: 20px;
+  }
+
+  .days-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .time-container {
+    grid-template-columns: 1fr;
+  }
+}

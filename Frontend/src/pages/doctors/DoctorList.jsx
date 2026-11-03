@@ -9,6 +9,11 @@ function DoctorList() {
   const [doctors, setDoctors] = useState(getDoctors());
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Get saved availability from Local Storage
+  const doctorAvailability = JSON.parse(
+    localStorage.getItem('doctorAvailability') || '[]'
+  );
+
   // Search doctors by name or specialization
   const filteredDoctors = doctors.filter((doctor) =>
     doctor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -34,7 +39,6 @@ function DoctorList() {
   return (
     <div className="doctor-list-page">
 
-      {/* Page Header */}
       <div className="doctor-list-header">
         <div>
           <h1>Doctors</h1>
@@ -49,7 +53,6 @@ function DoctorList() {
         </button>
       </div>
 
-      {/* Search Box */}
       <div className="doctor-search">
         <input
           type="text"
@@ -59,7 +62,6 @@ function DoctorList() {
         />
       </div>
 
-      {/* Doctors Table */}
       <div className="doctor-table-container">
         <table className="doctor-table">
 
@@ -70,6 +72,8 @@ function DoctorList() {
               <th>Specialization</th>
               <th>Email</th>
               <th>Phone</th>
+              <th>Working Days</th>
+              <th>Working Hours</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -77,64 +81,79 @@ function DoctorList() {
 
           <tbody>
             {filteredDoctors.length > 0 ? (
-              filteredDoctors.map((doctor) => (
-                <tr key={doctor.id}>
+              filteredDoctors.map((doctor) => {
 
-                  <td>{doctor.id}</td>
+                // Find availability for the current doctor
+                const availability = doctorAvailability.find(
+                  (item) => Number(item.doctorId) === Number(doctor.id)
+                );
 
-                  <td>{doctor.name}</td>
+                return (
+                  <tr key={doctor.id}>
+                    <td>{doctor.id}</td>
+                    <td>{doctor.name}</td>
+                    <td>{doctor.specialization}</td>
+                    <td>{doctor.email}</td>
+                    <td>{doctor.phone}</td>
 
-                  <td>{doctor.specialization}</td>
+                    <td>
+                      {availability
+                        ? availability.days.join(', ')
+                        : 'Not Set'}
+                    </td>
 
-                  <td>{doctor.email}</td>
+                    <td>
+                      {availability
+                        ? `${availability.startTime} - ${availability.endTime}`
+                        : 'Not Set'}
+                    </td>
 
-                  <td>{doctor.phone}</td>
+                    <td>
+                      <span
+                        className={`doctor-status ${
+                          availability
+                            ? availability.status.toLowerCase()
+                            : 'unavailable'
+                        }`}
+                      >
+                        {availability
+                          ? availability.status
+                          : 'Not Set'}
+                      </span>
+                    </td>
 
-                  <td>
-                    <span
-                      className={`doctor-status ${doctor.status.toLowerCase()}`}
-                    >
-                      {doctor.status}
-                    </span>
-                  </td>
+                    <td className="doctor-actions">
+                      <button
+                        className="edit-btn"
+                        onClick={() =>
+                          navigate(`/admin/doctors/details/${doctor.id}`)
+                        }
+                      >
+                        View
+                      </button>
 
-                  <td className="doctor-actions">
+                      <button
+                        className="edit-btn"
+                        onClick={() =>
+                          navigate(`/admin/doctors/edit/${doctor.id}`)
+                        }
+                      >
+                        Edit
+                      </button>
 
-                    {/* View Button */}
-                    <button
-                      className="edit-btn"
-                      onClick={() =>
-                        navigate(`/admin/doctors/details/${doctor.id}`)
-                      }
-                    >
-                      View
-                    </button>
-
-                    {/* Edit Button */}
-                    <button
-                      className="edit-btn"
-                      onClick={() =>
-                        navigate(`/admin/doctors/edit/${doctor.id}`)
-                      }
-                    >
-                      Edit
-                    </button>
-
-                    {/* Delete Button */}
-                    <button
-                      className="delete-btn"
-                      onClick={() => handleDelete(doctor.id)}
-                    >
-                      Delete
-                    </button>
-
-                  </td>
-
-                </tr>
-              ))
+                      <button
+                        className="delete-btn"
+                        onClick={() => handleDelete(doctor.id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })
             ) : (
               <tr>
-                <td colSpan="7" className="no-doctors">
+                <td colSpan="9" className="no-doctors">
                   No doctors found.
                 </td>
               </tr>
