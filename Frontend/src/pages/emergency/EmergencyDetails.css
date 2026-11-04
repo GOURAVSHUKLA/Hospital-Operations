@@ -1,0 +1,161 @@
+.emergency-details-page {
+  padding: 25px;
+  width: 100%;
+}
+
+.emergency-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.emergency-details-header h1 {
+  color: #1e293b;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.emergency-details-header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.emergency-details-edit {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.emergency-details-edit:hover {
+  background: #b91c1c;
+}
+
+.emergency-details-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.emergency-details-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.emergency-details-title h2 {
+  color: #1e293b;
+  font-size: 21px;
+}
+
+.emergency-details-priority {
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.emergency-details-priority.critical {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.emergency-details-priority.high {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.emergency-details-priority.medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.emergency-details-priority.low {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.emergency-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.emergency-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.emergency-detail-item span,
+.emergency-details-description span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.emergency-detail-item strong {
+  color: #334155;
+  font-size: 14px;
+}
+
+.emergency-details-description {
+  margin-top: 30px;
+  padding: 18px;
+  background: #f8fafc;
+  border-radius: 7px;
+}
+
+.emergency-details-description p {
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.emergency-details-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.emergency-details-back {
+  background: #e2e8f0;
+  color: #334155;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.emergency-details-back:hover {
+  background: #cbd5e1;
+}
+
+@media (max-width: 768px) {
+  .emergency-details-header,
+  .emergency-details-title {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .emergency-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .emergency-details-card {
+    padding: 18px;
+  }
+}

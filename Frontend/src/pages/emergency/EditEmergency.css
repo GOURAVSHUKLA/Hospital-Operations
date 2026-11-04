@@ -1,0 +1,135 @@
+.edit-emergency-page {
+  padding: 25px;
+  width: 100%;
+}
+
+.edit-emergency-header {
+  margin-bottom: 25px;
+}
+
+.edit-emergency-header h1 {
+  color: #1e293b;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.edit-emergency-header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.edit-emergency-form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.edit-emergency-form h3 {
+  color: #334155;
+  font-size: 17px;
+  margin: 10px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.edit-emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.edit-emergency-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-emergency-group label {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.edit-emergency-group input,
+.edit-emergency-group select,
+.edit-emergency-group textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+  color: #334155;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.edit-emergency-group input:focus,
+.edit-emergency-group select:focus,
+.edit-emergency-group textarea:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1);
+}
+
+.edit-emergency-group textarea {
+  resize: vertical;
+}
+
+.edit-emergency-description {
+  margin-bottom: 25px;
+}
+
+.edit-emergency-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.edit-emergency-actions button {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-emergency-cancel {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.edit-emergency-save {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.edit-emergency-save:hover {
+  background: #b91c1c;
+}
+
+.edit-emergency-cancel:hover {
+  background: #cbd5e1;
+}
+
+@media (max-width: 768px) {
+  .edit-emergency-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-emergency-form {
+    padding: 18px;
+  }
+
+  .edit-emergency-actions {
+    flex-direction: column-reverse;
+  }
+
+  .edit-emergency-actions button {
+    width: 100%;
+  }
+}

@@ -26,6 +26,11 @@ import EditRoom from "../pages/rooms/EditRoom";
 import RoomDetails from "../pages/rooms/RoomDetails";
 import EmergencyList from "../pages/emergency/EmergencyList";
 import AddEmergency from "../pages/emergency/AddEmergency";
+import EditEmergency from '../pages/emergency/EditEmergency';
+import EmergencyDetails from '../pages/emergency/EmergencyDetails';
+
+
+
 
 // Layout
 import AdminLayout from "../components/layout/AdminLayout";
@@ -46,6 +51,10 @@ function AppRoutes() {
           <Route path="patients/add" element={<AddPatient />} />
           <Route path="patients/edit/:id" element={<EditPatient />} />
           <Route path="patients/details/:id" element={<PatientDetails />} />
+          <Route
+  path="emergency/details/:id"
+  element={<EmergencyDetails />}
+/>
 
           {/* Employees */}
           <Route path="employees" element={<EmployeeList />} />
@@ -71,6 +80,8 @@ function AppRoutes() {
           {/* Emergency */}
           <Route path="emergency" element={<EmergencyList />} />
           <Route path="emergency/add" element={<AddEmergency />} />
+          <Route path="emergency/edit/:id" element={<EditEmergency />} />
+          <Route path="emergency/details/:id" element={<EmergencyDetails />} />
 
           {/* Dashboard */}
           <Route path="dashboard" element={<Dashboard />} />

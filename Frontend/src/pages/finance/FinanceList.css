@@ -1,0 +1,158 @@
+.finance-list-page {
+  padding: 25px;
+  width: 100%;
+}
+
+.finance-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.finance-list-header h1 {
+  color: #1e293b;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.finance-list-header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.add-transaction-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-transaction-btn:hover {
+  background: #1d4ed8;
+}
+
+.finance-list-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.finance-list-filters input,
+.finance-list-filters select {
+  padding: 11px 13px;
+  border: 1px solid #dbe2ea;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+}
+
+.finance-list-filters input {
+  width: 350px;
+}
+
+.finance-list-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.finance-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1050px;
+}
+
+.finance-list-table th,
+.finance-list-table td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid #edf0f4;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.finance-list-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+}
+
+.finance-list-table td {
+  color: #334155;
+}
+
+.finance-list-type {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.finance-list-type.income {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.finance-list-type.expense {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.finance-list-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.finance-list-actions button {
+  border: none;
+  padding: 6px 9px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.finance-view-btn {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.finance-edit-btn {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.finance-delete-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.finance-no-data {
+  text-align: center !important;
+  padding: 30px !important;
+  color: #64748b !important;
+}
+
+@media (max-width: 768px) {
+  .finance-list-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .finance-list-filters {
+    flex-direction: column;
+  }
+
+  .finance-list-filters input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
