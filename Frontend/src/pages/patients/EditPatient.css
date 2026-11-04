@@ -1,0 +1,101 @@
+.edit-patient-page {
+  width: 100%;
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+.edit-patient-header {
+  margin-bottom: 25px;
+}
+
+.edit-patient-header h1 {
+  color: #14213d;
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.edit-patient-header p {
+  color: #777;
+  font-size: 14px;
+}
+
+.edit-patient-form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.edit-patient-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-patient-form .form-group label {
+  color: #14213d;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.edit-patient-form .form-group input,
+.edit-patient-form .form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: white;
+}
+
+.edit-patient-form .form-group input:focus,
+.edit-patient-form .form-group select:focus {
+  border-color: #2878e8;
+}
+
+.edit-patient-form .form-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.edit-patient-form .save-patient-btn,
+.edit-patient-form .cancel-patient-btn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.edit-patient-form .save-patient-btn {
+  background: #14213d;
+  color: white;
+}
+
+.edit-patient-form .save-patient-btn:hover {
+  background: #2878e8;
+}
+
+.edit-patient-form .cancel-patient-btn {
+  background: #e5e7eb;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .edit-patient-form {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .edit-patient-form .form-buttons {
+    flex-direction: column;
+  }
+}

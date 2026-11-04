@@ -8,6 +8,11 @@ import AddDoctor from "../pages/doctors/AddDoctor";
 import EditDoctor from "../pages/doctors/EditDoctor";
 import DoctorDetails from "../pages/doctors/DoctorDetails";
 import DoctorAvailability from "../pages/doctors/DoctorAvailability";
+import PatientList from '../pages/patients/PatientList';
+import AddPatient from "../pages/patients/AddPatient";
+import EditPatient from "../pages/patients/EditPatient";
+import PatientDetails from "../pages/patients/PatientDetails";
+
 
 // Layout
 import AdminLayout from "../components/layout/AdminLayout";
@@ -23,11 +28,17 @@ function AppRoutes() {
         {/* Admin Layout */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="doctors/edit/:id" element={<EditDoctor />} />
+          <Route path="patients" element={<PatientList />} />
+          <Route path="patients" element={<PatientList />} />
+          <Route path="patients/add" element={<AddPatient />} />
+          <Route path="patients/edit/:id" element={<EditPatient />} />
+          <Route path="patients/details/:id" element={<PatientDetails />} />
+          
         
 
           {/* Dashboard */}
           <Route path="dashboard" element={<Dashboard />} />
-
+ 
           {/* Doctors */}
           <Route path="doctors" element={<DoctorList />} />
           <Route path="doctors/add" element={<AddDoctor />} />
