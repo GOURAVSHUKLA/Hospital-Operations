@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getTransactions } from './financeStorage';
 import './FinanceDashboard.css';
 
 function FinanceDashboard() {
+  const navigate = useNavigate();
   const [transactions] = useState(getTransactions());
 
   const totalIncome = transactions
@@ -24,6 +26,22 @@ function FinanceDashboard() {
         <div>
           <h1>Finance Dashboard</h1>
           <p>Overview of hospital income and expenses.</p>
+        </div>
+
+        <div className="finance-dashboard-actions">
+          <button
+            className="finance-view-all-btn"
+            onClick={() => navigate('/admin/finance/transactions')}
+          >
+            View All Transactions
+          </button>
+
+          <button
+            className="finance-add-btn"
+            onClick={() => navigate('/admin/finance/add')}
+          >
+            + Add Transaction
+          </button>
         </div>
       </div>
 

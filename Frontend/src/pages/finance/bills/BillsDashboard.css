@@ -1,0 +1,147 @@
+.bills-dashboard {
+  width: 100%;
+  padding: 25px;
+}
+
+.bills-dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.bills-dashboard-header h1 {
+  color: #1e293b;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.bills-dashboard-header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.bills-dashboard-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.bills-dashboard-actions button {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 7px;
+  background: #2563eb;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bills-dashboard-actions button:first-child {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.bills-dashboard-actions button:hover {
+  opacity: 0.85;
+}
+
+.bills-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.bills-stat-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #2563eb;
+}
+
+.bills-stat-card p {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.bills-stat-card h2 {
+  color: #1e293b;
+  font-size: 24px;
+}
+
+.bills-status-section {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.bills-status-section h2 {
+  color: #1e293b;
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+
+.bills-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.bills-status-card {
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.bills-status-card h3 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.bills-status-card p {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bills-status-card.paid {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.bills-status-card.pending {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.bills-status-card.partial {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+@media (max-width: 1000px) {
+  .bills-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .bills-stats-grid,
+  .bills-status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bills-dashboard-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .bills-dashboard-actions button {
+    width: 100%;
+  }
+}

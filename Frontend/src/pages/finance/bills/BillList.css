@@ -1,0 +1,154 @@
+.bill-list-page {
+  width: 100%;
+  padding: 25px;
+}
+
+.bill-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.bill-list-header h1 {
+  color: #1e293b;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.bill-list-header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.bill-add-btn {
+  padding: 11px 18px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bill-add-btn:hover {
+  background: #1d4ed8;
+}
+
+.bill-list-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.bill-list-filters input,
+.bill-list-filters select {
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  background: white;
+  color: #334155;
+}
+
+.bill-list-filters input {
+  flex: 1;
+}
+
+.bill-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.bill-table {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: collapse;
+}
+
+.bill-table th,
+.bill-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 13px;
+}
+
+.bill-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+}
+
+.bill-table td {
+  color: #334155;
+}
+
+.bill-status {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.bill-status.paid {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.bill-status.pending {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.bill-status.partially-paid {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.bill-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.bill-actions button {
+  padding: 6px 9px;
+  border: none;
+  border-radius: 5px;
+  background: #e0e7ff;
+  color: #3730a3;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.bill-actions .bill-delete-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.bill-empty {
+  text-align: center !important;
+  padding: 30px !important;
+  color: #64748b !important;
+}
+
+@media (max-width: 600px) {
+  .bill-list-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bill-list-filters {
+    flex-direction: column;
+  }
+
+  .bill-add-btn {
+    width: 100%;
+  }
+}
