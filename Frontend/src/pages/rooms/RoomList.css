@@ -1,0 +1,182 @@
+.room-list-page {
+  padding: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.room-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.room-list-header h1 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 28px;
+}
+
+.room-list-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.add-room-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-room-btn:hover {
+  background: #1d4ed8;
+}
+
+.room-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.room-filters input,
+.room-filters select {
+  padding: 11px 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+  background: white;
+}
+
+.room-filters input {
+  width: 280px;
+}
+
+.room-filters input:focus,
+.room-filters select:focus {
+  border-color: #2563eb;
+}
+
+.room-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.room-table {
+  width: 100%;
+  min-width: 1150px;
+  border-collapse: collapse;
+}
+
+.room-table th,
+.room-table td {
+  padding: 14px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.room-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+}
+
+.room-table td {
+  color: #334155;
+}
+
+.room-status {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.room-status.available {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.room-status.occupied {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.room-status.maintenance {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.room-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.room-actions button {
+  border: none;
+  padding: 7px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.room-view-btn {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.room-edit-btn {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.room-delete-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.room-actions button:hover {
+  opacity: 0.8;
+}
+
+.no-rooms {
+  text-align: center !important;
+  padding: 30px !important;
+  color: #64748b !important;
+}
+
+@media (max-width: 768px) {
+  .room-list-page {
+    padding: 15px;
+  }
+
+  .room-list-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .room-list-header h1 {
+    font-size: 24px;
+  }
+
+  .room-filters {
+    flex-direction: column;
+  }
+
+  .room-filters input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

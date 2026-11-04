@@ -1,0 +1,109 @@
+.edit-employee-page {
+  padding: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-employee-header {
+  margin-bottom: 25px;
+}
+
+.edit-employee-header h1 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 28px;
+}
+
+.edit-employee-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.edit-employee-form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.employee-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.employee-form-group label {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.employee-form-group input,
+.employee-form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.employee-form-group input:focus,
+.employee-form-group select:focus {
+  border-color: #2563eb;
+}
+
+.employee-form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.save-employee-btn,
+.cancel-employee-btn {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.save-employee-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.save-employee-btn:hover {
+  background: #1d4ed8;
+}
+
+.cancel-employee-btn {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.cancel-employee-btn:hover {
+  background: #cbd5e1;
+}
+
+@media (max-width: 768px) {
+  .edit-employee-page {
+    padding: 15px;
+  }
+
+  .edit-employee-form {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+
+  .edit-employee-header h1 {
+    font-size: 24px;
+  }
+}

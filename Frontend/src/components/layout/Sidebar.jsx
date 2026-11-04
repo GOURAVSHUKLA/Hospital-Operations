@@ -31,17 +31,17 @@ function Sidebar() {
       end: true,
     },
     {
+      name: "Doctor Availability",
+      path: "/admin/doctors/availability",
+      icon: <FaCalendarCheck />,
+    },
+    {
       name: "Patients",
       path: "/admin/patients",
       icon: <FaUserInjured />,
       end: true,
     },
-    {
-      name: "Doctor Availability",
-      path: "/admin/doctors/availability",
-      icon: <FaCalendarCheck />,
-    },
-   
+    
     {
       name: "Employees",
       path: "/admin/employees",

@@ -1,0 +1,183 @@
+.emergency-list-page {
+  padding: 25px;
+  width: 100%;
+}
+
+.emergency-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.emergency-list-header h1 {
+  font-size: 26px;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.emergency-list-header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.add-emergency-btn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-emergency-btn:hover {
+  background: #b91c1c;
+}
+
+.emergency-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.emergency-filters input,
+.emergency-filters select {
+  padding: 11px 13px;
+  border: 1px solid #dbe2ea;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+}
+
+.emergency-filters input {
+  width: 350px;
+}
+
+.emergency-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.emergency-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1050px;
+}
+
+.emergency-table th,
+.emergency-table td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid #edf0f4;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.emergency-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+}
+
+.emergency-table td {
+  color: #334155;
+}
+
+.emergency-priority,
+.emergency-status {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.emergency-priority.critical {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.emergency-priority.high {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.emergency-priority.medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.emergency-priority.low {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.emergency-status.admitted {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.emergency-status.under-treatment {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.emergency-status.discharged {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.emergency-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.emergency-actions button {
+  border: none;
+  padding: 6px 9px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.emergency-view-btn {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.emergency-edit-btn {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.emergency-delete-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.no-emergency-cases {
+  text-align: center !important;
+  padding: 30px !important;
+  color: #64748b !important;
+}
+
+@media (max-width: 768px) {
+  .emergency-list-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .emergency-filters {
+    flex-direction: column;
+  }
+
+  .emergency-filters input {
+    width: 100%;
+  }
+}

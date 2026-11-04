@@ -1,0 +1,121 @@
+.add-appointment-page {
+  padding: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.add-appointment-header {
+  margin-bottom: 25px;
+}
+
+.add-appointment-header h1 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 28px;
+}
+
+.add-appointment-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.add-appointment-form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.appointment-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.appointment-form-group label {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.appointment-form-group input,
+.appointment-form-group select,
+.appointment-form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: #ffffff;
+  font-family: inherit;
+}
+
+.appointment-form-group textarea {
+  resize: vertical;
+}
+
+.appointment-form-group input:focus,
+.appointment-form-group select:focus,
+.appointment-form-group textarea:focus {
+  border-color: #2563eb;
+}
+
+.appointment-form-group input[readonly] {
+  background: #f8fafc;
+  cursor: not-allowed;
+}
+
+.appointment-form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.save-appointment-btn,
+.cancel-appointment-btn {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.save-appointment-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.save-appointment-btn:hover {
+  background: #1d4ed8;
+}
+
+.cancel-appointment-btn {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.cancel-appointment-btn:hover {
+  background: #cbd5e1;
+}
+
+@media (max-width: 768px) {
+  .add-appointment-page {
+    padding: 15px;
+  }
+
+  .add-appointment-form {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+
+  .add-appointment-header h1 {
+    font-size: 24px;
+  }
+}

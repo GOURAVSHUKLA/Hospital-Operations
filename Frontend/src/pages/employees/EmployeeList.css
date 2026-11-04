@@ -1,0 +1,167 @@
+.employee-list-page {
+  padding: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.employee-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.employee-list-header h1 {
+  font-size: 28px;
+  margin: 0 0 8px;
+  color: #1e293b;
+}
+
+.employee-list-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.add-employee-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.add-employee-btn:hover {
+  background: #1d4ed8;
+}
+
+.employee-search {
+  margin-bottom: 20px;
+}
+
+.employee-search input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.employee-search input:focus {
+  border-color: #2563eb;
+}
+
+.employee-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.employee-table {
+  width: 100%;
+  min-width: 1100px;
+  border-collapse: collapse;
+}
+
+.employee-table th,
+.employee-table td {
+  padding: 15px 14px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.employee-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+}
+
+.employee-table td {
+  color: #334155;
+}
+
+.employee-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.employee-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.employee-status.active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.employee-status.inactive {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.employee-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.employee-actions button {
+  border: none;
+  padding: 7px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.employee-view-btn {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.employee-edit-btn {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.employee-delete-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.employee-actions button:hover {
+  opacity: 0.8;
+}
+
+.no-employees {
+  text-align: center !important;
+  padding: 30px !important;
+  color: #64748b !important;
+}
+
+@media (max-width: 768px) {
+  .employee-list-page {
+    padding: 15px;
+  }
+
+  .employee-list-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .employee-list-header h1 {
+    font-size: 24px;
+  }
+}
