@@ -1,0 +1,52 @@
+Python cache files
+
+pycache/
+*.py[cod]
+*$py.class
+
+Virtual Environment
+
+.venv/
+venv/
+env/
+
+Django
+
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+Environment variables and secrets
+
+.env
+.env.*
+!.env.example
+
+IDE settings
+
+.vscode/
+.idea/
+
+Operating System files
+
+.DS_Store
+Thumbs.db
+
+Testing and coverage
+
+.coverage
+htmlcov/
+.pytest_cache/
+
+Build files
+
+build/
+dist/
+*.egg-info/
+
+Migrations (KEEP migrations in Git)
+
+Do not ignore migrations!
