@@ -18,12 +18,14 @@ function AddBill() {
     { name: '', quantity: 1, price: '' },
   ]);
 
+  // Calculate total bill amount
   const totalAmount = items.reduce(
     (total, item) =>
       total + Number(item.quantity) * Number(item.price || 0),
     0
   );
 
+  // Handle patient and date changes
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -33,6 +35,7 @@ function AddBill() {
     }));
   };
 
+  // Handle bill item changes
   const handleItemChange = (index, field, value) => {
     const updatedItems = [...items];
 
@@ -44,6 +47,7 @@ function AddBill() {
     setItems(updatedItems);
   };
 
+  // Add new bill item
   const addItem = () => {
     setItems([
       ...items,
@@ -51,6 +55,7 @@ function AddBill() {
     ]);
   };
 
+  // Remove bill item
   const removeItem = (index) => {
     if (items.length === 1) {
       alert('At least one bill item is required.');
@@ -60,6 +65,7 @@ function AddBill() {
     setItems(items.filter((_, i) => i !== index));
   };
 
+  // Generate bill
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -72,25 +78,40 @@ function AddBill() {
       return;
     }
 
-    if (items.some((item) => !item.name.trim() || Number(item.price) <= 0)) {
-      alert('Please enter valid bill items and prices.');
+    if (
+      items.some(
+        (item) =>
+          !item.name.trim() ||
+          Number(item.quantity) <= 0 ||
+          Number(item.price) <= 0
+      )
+    ) {
+      alert('Please enter valid bill items, quantities and prices.');
       return;
     }
 
     const bills = getBills();
 
+    // Generate unique bill number
+    const maxBillNumber = bills.reduce((max, bill) => {
+      const number = Number(bill.billNumber?.replace('BILL-', '')) || 0;
+      return Math.max(max, number);
+    }, 0);
+
     const newBill = {
       id: Date.now(),
-      billNumber: `BILL-${String(bills.length + 1).padStart(3, '0')}`,
+      billNumber: `BILL-${String(maxBillNumber + 1).padStart(3, '0')}`,
       patientId: selectedPatient.id,
       patientName: selectedPatient.name,
       billDate: formData.billDate,
       dueDate: formData.dueDate,
+
       items: items.map((item) => ({
-        ...item,
+        name: item.name.trim(),
         quantity: Number(item.quantity),
         price: Number(item.price),
       })),
+
       totalAmount,
       paidAmount: 0,
       paymentStatus: 'Pending',
@@ -106,15 +127,18 @@ function AddBill() {
 
   return (
     <div className="add-bill-page">
+
       <div className="add-bill-header">
         <h1>Generate Patient Bill</h1>
         <p>Create a new invoice for a patient.</p>
       </div>
 
       <form className="add-bill-form" onSubmit={handleSubmit}>
+
         <h3>Patient Information</h3>
 
         <div className="add-bill-grid">
+
           <div className="add-bill-group">
             <label>Select Patient *</label>
 
@@ -158,9 +182,11 @@ function AddBill() {
               required
             />
           </div>
+
         </div>
 
         <div className="add-bill-items-section">
+
           <div className="add-bill-items-header">
             <h3>Bill Items</h3>
 
@@ -170,7 +196,9 @@ function AddBill() {
           </div>
 
           {items.map((item, index) => (
+
             <div className="add-bill-item-row" key={index}>
+
               <div className="add-bill-group">
                 <label>Item Name *</label>
 
@@ -221,18 +249,23 @@ function AddBill() {
               >
                 Remove
               </button>
+
             </div>
+
           ))}
+
         </div>
 
         <div className="add-bill-total">
           <span>Total Bill Amount</span>
+
           <strong>
             ₹{totalAmount.toLocaleString('en-IN')}
           </strong>
         </div>
 
         <div className="add-bill-actions">
+
           <button
             type="button"
             onClick={() => navigate('/admin/finance/bills/list')}
@@ -243,7 +276,9 @@ function AddBill() {
           <button type="submit">
             Generate Bill
           </button>
+
         </div>
+
       </form>
     </div>
   );

@@ -1,41 +1,38 @@
+import { useEffect, useState } from "react";
+import { getAppointments } from "../../pages/appointments/appointmentStorage";
+import { getDoctors } from "../../pages/doctors/doctorStorage";
+import { getPatients } from "../../pages/patients/patientStorage";
 import "./RecentAppointments.css";
 
-const appointments = [
-  {
-    id: 1,
-    patient: "Rahul Sharma",
-    doctor: "Dr. Amit",
-    department: "Cardiology",
-    date: "02 Nov 2026",
-    status: "Confirmed",
-  },
-  {
-    id: 2,
-    patient: "Priya Verma",
-    doctor: "Dr. Neha",
-    department: "Neurology",
-    date: "02 Nov 2026",
-    status: "Pending",
-  },
-  {
-    id: 3,
-    patient: "Aman Singh",
-    doctor: "Dr. Raj",
-    department: "Orthopedics",
-    date: "03 Nov 2026",
-    status: "Completed",
-  },
-  {
-    id: 4,
-    patient: "Sneha Patel",
-    doctor: "Dr. Karan",
-    department: "Dermatology",
-    date: "03 Nov 2026",
-    status: "Confirmed",
-  },
-];
-
 function RecentAppointments() {
+  const [appointments, setAppointments] = useState([]);
+
+  useEffect(() => {
+    const savedAppointments = getAppointments();
+    const doctors = getDoctors();
+    const patients = getPatients();
+
+    const recentAppointments = savedAppointments
+      .map((appointment) => {
+        const patient = patients.find(
+          (item) => item.id === appointment.patientId
+        );
+        const doctor = doctors.find(
+          (item) => item.id === appointment.doctorId
+        );
+
+        return {
+          ...appointment,
+          patientName: patient ? patient.name : "Unknown Patient",
+          doctorName: doctor ? doctor.name : "Unknown Doctor",
+        };
+      })
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 5);
+
+    setAppointments(recentAppointments);
+  }, []);
+
   return (
     <div className="recent-appointments">
       <h2>Recent Appointments</h2>
@@ -52,19 +49,33 @@ function RecentAppointments() {
             </tr>
           </thead>
           <tbody>
-            {appointments.map((appointment) => (
-              <tr key={appointment.id}>
-                <td>{appointment.patient}</td>
-                <td>{appointment.doctor}</td>
-                <td>{appointment.department}</td>
-                <td>{appointment.date}</td>
-                <td>
-                  <span className={`status ${appointment.status.toLowerCase()}`}>
-                    {appointment.status}
-                  </span>
-                </td>
+            {appointments.length === 0 ? (
+              <tr>
+                <td colSpan="5">No appointments found.</td>
               </tr>
-            ))}
+            ) : (
+              appointments.map((appointment) => {
+                const status = appointment.status || "Unknown";
+
+                return (
+                  <tr key={appointment.id}>
+                    <td>{appointment.patientName}</td>
+                    <td>{appointment.doctorName}</td>
+                    <td>{appointment.department}</td>
+                    <td>{appointment.date}</td>
+                    <td>
+                      <span
+                        className={`status ${status
+                          .toLowerCase()
+                          .replace(/\s+/g, "-")}`}
+                      >
+                        {status}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })
+            )}
           </tbody>
         </table>
       </div>

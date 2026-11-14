@@ -42,6 +42,13 @@ function FinanceDashboard() {
           >
             + Add Transaction
           </button>
+
+          <button
+            className="finance-bills-btn"
+            onClick={() => navigate('/admin/finance/bills')}
+          >
+            Bills & Payments
+          </button>
         </div>
       </div>
 

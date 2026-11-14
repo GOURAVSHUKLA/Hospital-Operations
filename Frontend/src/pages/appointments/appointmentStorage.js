@@ -34,7 +34,6 @@ const initialAppointments = [
   },
 ];
 
-// Get appointments from localStorage
 export const getAppointments = () => {
   const savedAppointments = localStorage.getItem('appointments');
 
@@ -42,19 +41,14 @@ export const getAppointments = () => {
     return JSON.parse(savedAppointments);
   }
 
-  // Initialize doctors and patients before appointments
   getDoctors();
   getPatients();
 
-  localStorage.setItem(
-    'appointments',
-    JSON.stringify(initialAppointments)
-  );
+  localStorage.setItem('appointments', JSON.stringify(initialAppointments));
 
   return initialAppointments;
 };
 
-// Save appointments to localStorage
 export const saveAppointments = (appointments) => {
   localStorage.setItem('appointments', JSON.stringify(appointments));
 };

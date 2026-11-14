@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Pages
+// Authentication
 import Login from "../pages/auth/Login";
+
+// Dashboard
 import Dashboard from "../pages/dashboard/Dashboard";
 
 // Doctors
@@ -48,6 +50,21 @@ import AddTransaction from "../pages/finance/AddTransaction";
 import EditTransaction from "../pages/finance/EditTransaction";
 import TransactionDetails from "../pages/finance/TransactionDetails";
 
+// Bills & Payments
+import BillsDashboard from "../pages/finance/bills/BillsDashboard";
+import BillList from "../pages/finance/bills/BillList";
+import AddBill from "../pages/finance/bills/AddBill";
+import EditBill from "../pages/finance/bills/EditBill";
+import BillDetails from "../pages/finance/bills/BillDetails";
+import AddPayment from "../pages/finance/bills/AddPayment";
+
+// Notification
+import NotificationList from '../pages/notifications/NotificationList';
+
+// Settings
+import Settings from '../pages/settings/Settings';
+
+
 // Layout
 import AdminLayout from "../components/layout/AdminLayout";
 
@@ -55,6 +72,7 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+
         {/* Login */}
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
@@ -88,10 +106,7 @@ function AppRoutes() {
           <Route path="appointments" element={<AppointmentList />} />
           <Route path="appointments/add" element={<AddAppointment />} />
           <Route path="appointments/edit/:id" element={<EditAppointment />} />
-          <Route
-            path="appointments/details/:id"
-            element={<AppointmentDetails />}
-          />
+          <Route path="appointments/details/:id" element={<AppointmentDetails />} />
 
           {/* Rooms & Beds */}
           <Route path="rooms" element={<RoomList />} />
@@ -110,10 +125,21 @@ function AppRoutes() {
           <Route path="finance/transactions" element={<FinanceList />} />
           <Route path="finance/add" element={<AddTransaction />} />
           <Route path="finance/edit/:id" element={<EditTransaction />} />
-          <Route
-            path="finance/details/:id"
-            element={<TransactionDetails />}
-          />
+          <Route path="finance/details/:id" element={<TransactionDetails />} />
+
+          {/* Bills & Payments */}
+          <Route path="finance/bills" element={<BillsDashboard />} />
+          <Route path="finance/bills/list" element={<BillList />} />
+          <Route path="finance/bills/add" element={<AddBill />} />
+          <Route path="finance/bills/edit/:id" element={<EditBill />} />
+          <Route path="finance/bills/details/:id" element={<BillDetails />} />
+          <Route path="finance/bills/payment/:id" element={<AddPayment />} />
+          
+          {/* Notification */}
+          <Route path="notifications" element={<NotificationList />} />
+
+          {/* Settings */}
+          <Route path="settings" element={<Settings />} />
 
         </Route>
       </Routes>
