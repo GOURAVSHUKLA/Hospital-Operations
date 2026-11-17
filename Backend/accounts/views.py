@@ -4,7 +4,7 @@ from accounts.registration_serializers import RegistrationSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from .permissions import IsAdmin
+from .permissions import IsAdminRole
 
 class PatientRegistrationView(CreateAPIView):
 
@@ -13,7 +13,7 @@ class PatientRegistrationView(CreateAPIView):
 
 class AdminDashboardView(APIView):
 
-    permission_classes = [IsAuthenticated, IsAdmin]
+    permission_classes = [IsAuthenticated, IsAdminRole]
 
     def get(self, request):
 
