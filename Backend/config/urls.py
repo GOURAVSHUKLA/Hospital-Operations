@@ -16,4 +16,7 @@ urlpatterns = [
     # Patients APIs
     path('api/patients/', include('patients.urls')),
 
+    # Employees APIs
+     path('api/employees/', include('employees.urls')),
+     
 ]
