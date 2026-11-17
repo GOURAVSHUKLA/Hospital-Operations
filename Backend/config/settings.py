@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     # Third-party applications
     'rest_framework',
     'corsheaders',
-    
+
     # Custom Applications
     'accounts',
     'doctors',
+    'patients',
 
 
 ]
