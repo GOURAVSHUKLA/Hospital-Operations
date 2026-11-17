@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import AllowAny
 
-# Create your views here.
+from accounts.registration_serializers import RegistrationSerializer
+
+
+class PatientRegistrationView(CreateAPIView):
+
+    serializer_class = RegistrationSerializer
+    permission_classes = [AllowAny]
