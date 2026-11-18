@@ -84,9 +84,14 @@ class AppointmentViewSet(viewsets.ModelViewSet):
         )
 
     # Update appointment
+    
     def perform_update(self, serializer):
 
-        old_status = serializer.instance.status
+        old_instance = serializer.instance
+
+        old_status = old_instance.status
+        old_date = old_instance.appointment_date
+        old_time = old_instance.appointment_time
 
         appointment = serializer.save()
 
@@ -101,11 +106,28 @@ class AppointmentViewSet(viewsets.ModelViewSet):
                 'CANCELLED': 'Your appointment has been cancelled.'
             }
 
-            self.send_notification(
-                appointment,
-                "Appointment Status Updated",
-                messages.get(
-                    new_status,
-                    f"Appointment status changed to {new_status}."
-                )
+            message = messages.get(
+                new_status,
+                f"Appointment status changed to {new_status}."
             )
+
+            title = "Appointment Status Updated"
+
+        elif old_date != appointment.appointment_date or old_time != appointment.appointment_time:
+
+            message = (
+                f"Your appointment has been rescheduled to "
+                f"{appointment.appointment_date} at "
+                f"{appointment.appointment_time}."
+            )
+
+            title = "Appointment Rescheduled"
+
+        else:
+            return
+
+        self.send_notification(
+            appointment,
+            title,
+            message
+        )
