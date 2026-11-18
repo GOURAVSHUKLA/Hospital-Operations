@@ -6,6 +6,8 @@ from .models import Appointment
 from .serializers import AppointmentSerializer
 from .permissions import AppointmentRolePermission
 
+from notifications.models import Notification
+
 
 class AppointmentViewSet(viewsets.ModelViewSet):
 
@@ -20,17 +22,14 @@ class AppointmentViewSet(viewsets.ModelViewSet):
 
         user = self.request.user
 
-        # ADMIN can see all appointments
         if user.role == 'ADMIN':
             return Appointment.objects.all()
 
-        # PATIENT can see only their appointments
         if user.role == 'PATIENT':
             return Appointment.objects.filter(
                 patient__user=user
             )
 
-        # DOCTOR can see only their appointments
         if user.role == 'DOCTOR':
             return Appointment.objects.filter(
                 doctor__user=user
@@ -38,11 +37,28 @@ class AppointmentViewSet(viewsets.ModelViewSet):
 
         return Appointment.objects.none()
 
+    # Notification helper
+    def send_notification(self, appointment, title, message):
+
+        recipients = [
+            appointment.patient.user,
+            appointment.doctor.user
+        ]
+
+        for recipient in recipients:
+
+            Notification.objects.create(
+                recipient=recipient,
+                title=title,
+                message=message,
+                notification_type='appointment'
+            )
+
+    # Create appointment
     def perform_create(self, serializer):
 
         user = self.request.user
 
-        # PATIENT appointment creation
         if user.role == 'PATIENT':
 
             if not hasattr(user, 'patient_profile'):
@@ -50,10 +66,46 @@ class AppointmentViewSet(viewsets.ModelViewSet):
                     "Patient profile not found. Please contact the administrator."
                 )
 
-            serializer.save(
+            appointment = serializer.save(
                 patient=user.patient_profile,
                 status='PENDING'
             )
 
         else:
-            serializer.save()
+            appointment = serializer.save()
+
+        self.send_notification(
+            appointment,
+            "New Appointment",
+            f"Appointment scheduled for "
+            f"{appointment.appointment_date} "
+            f"at {appointment.appointment_time}. "
+            f"Status: {appointment.status}"
+        )
+
+    # Update appointment
+    def perform_update(self, serializer):
+
+        old_status = serializer.instance.status
+
+        appointment = serializer.save()
+
+        new_status = appointment.status
+
+        if old_status != new_status:
+
+            messages = {
+                'PENDING': 'Your appointment is pending.',
+                'CONFIRMED': 'Your appointment has been confirmed.',
+                'COMPLETED': 'Your appointment has been completed.',
+                'CANCELLED': 'Your appointment has been cancelled.'
+            }
+
+            self.send_notification(
+                appointment,
+                "Appointment Status Updated",
+                messages.get(
+                    new_status,
+                    f"Appointment status changed to {new_status}."
+                )
+            )

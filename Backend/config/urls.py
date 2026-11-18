@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.urls import path, include
+
 
 urlpatterns = [
 
@@ -27,4 +27,8 @@ urlpatterns = [
 
     #Expenses APIs
     path('api/expenses/', include('expenses.urls')),
+
+    # Notifications APIs
+     path('api/notifications/',include('notifications.urls')),
+     
 ]
