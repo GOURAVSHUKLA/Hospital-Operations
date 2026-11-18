@@ -1,12 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
+import useAuth from "../../hooks/useAuth";
 import { FaUserInjured } from "react-icons/fa";
 
 import {
   FaHospital,
   FaHome,
   FaUserMd,
-  FaUsers,
   FaUserNurse,
   FaCalendarCheck,
   FaBed,
@@ -18,6 +18,16 @@ import {
 } from "react-icons/fa";
 
 function Sidebar() {
+
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+
+  // Handle logout
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
+
   const menuItems = [
     {
       name: "Dashboard",
@@ -41,7 +51,6 @@ function Sidebar() {
       icon: <FaUserInjured />,
       end: true,
     },
-    
     {
       name: "Employees",
       path: "/admin/employees",
@@ -78,14 +87,19 @@ function Sidebar() {
       icon: <FaCog />,
     },
   ];
+
   return (
     <aside className="sidebar">
+
       <div className="sidebar-logo">
         <FaHospital className="hospital-icon" />
         <h2>MediCare</h2>
       </div>
+
       <nav className="sidebar-menu">
+
         <p className="menu-heading">MAIN MENU</p>
+
         {menuItems.map((item) => (
           <NavLink
             key={item.path}
@@ -99,16 +113,21 @@ function Sidebar() {
             <span>{item.name}</span>
           </NavLink>
         ))}
+
       </nav>
+
       <div className="sidebar-logout">
+
         <button
           className="logout-button"
-          onClick={() => alert("Logout functionality coming soon")}
+          onClick={handleLogout}
         >
           <FaSignOutAlt />
           <span>Logout</span>
         </button>
+
       </div>
+
     </aside>
   );
 }

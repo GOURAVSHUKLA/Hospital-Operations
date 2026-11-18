@@ -39,6 +39,41 @@ export const AuthProvider = ({ children }) => {
         restoreAuthentication();
     }, []);
 
+    // Listen for refreshed access tokens
+    useEffect(() => {
+        const handleTokenRefresh = (event) => {
+            setAccessToken(event.detail.access);
+        };
+
+        const handleSessionExpired = () => {
+            setAccessToken(null);
+            setRefreshToken(null);
+            setUser(null);
+        };
+
+        window.addEventListener(
+            "auth:token-refreshed",
+            handleTokenRefresh
+        );
+
+        window.addEventListener(
+            "auth:session-expired",
+            handleSessionExpired
+        );
+
+        return () => {
+            window.removeEventListener(
+                "auth:token-refreshed",
+                handleTokenRefresh
+            );
+
+            window.removeEventListener(
+                "auth:session-expired",
+                handleSessionExpired
+            );
+        };
+    }, []);
+
     // Login function
     const login = async (username, password) => {
         const data = await authService.login(username, password);

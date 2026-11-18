@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Authentication
 import Login from "../pages/auth/Login";
+import ProtectedRoute from "./ProtectedRoute";
 
 // Dashboard
 import Dashboard from "../pages/dashboard/Dashboard";
@@ -78,6 +79,7 @@ function AppRoutes() {
         <Route path="/login" element={<Login />} />
 
         {/* Admin Layout */}
+        <Route element={<ProtectedRoute />}>
         <Route path="/admin" element={<AdminLayout />}>
 
           {/* Dashboard */}
@@ -140,7 +142,7 @@ function AppRoutes() {
 
           {/* Settings */}
           <Route path="settings" element={<Settings />} />
-
+             </Route>
         </Route>
       </Routes>
     </BrowserRouter>
