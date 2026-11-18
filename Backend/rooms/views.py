@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.exceptions import ValidationError
 
 from accounts.permissions import IsAdminRole
 
@@ -18,6 +19,22 @@ class RoomViewSet(viewsets.ModelViewSet):
         IsAdminRole
     ]
 
+    def destroy(self, request, *args, **kwargs):
+
+        room = self.get_object()
+
+        if room.status == 'OCCUPIED':
+            raise ValidationError(
+                "Cannot delete an occupied room."
+            )
+
+        if room.beds.filter(status='OCCUPIED').exists():
+            raise ValidationError(
+                "Cannot delete a room containing occupied beds."
+            )
+
+        return super().destroy(request, *args, **kwargs)
+
 
 class BedViewSet(viewsets.ModelViewSet):
 
@@ -29,3 +46,14 @@ class BedViewSet(viewsets.ModelViewSet):
         IsAuthenticated,
         IsAdminRole
     ]
+
+    def destroy(self, request, *args, **kwargs):
+
+        bed = self.get_object()
+
+        if bed.status == 'OCCUPIED':
+            raise ValidationError(
+                "Cannot delete an occupied bed."
+            )
+
+        return super().destroy(request, *args, **kwargs)
