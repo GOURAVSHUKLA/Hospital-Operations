@@ -21,4 +21,7 @@ urlpatterns = [
 
     #Appointment APIs
     path('api/appointments/', include('appointments.urls')),
+
+    #Rooms APIs
+    path('api/rooms/', include('rooms.urls')),
 ]
