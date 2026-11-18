@@ -11,9 +11,25 @@ class AppointmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ['created_at']
 
+        extra_kwargs = {
+            'patient': {'required': False}
+        }
+
+    def get_fields(self):
+
+        fields = super().get_fields()
+
+        request = self.context.get('request')
+
+        if request and request.user.role == 'PATIENT':
+
+            fields['patient'].read_only = True
+            fields['status'].read_only = True
+
+        return fields
+
     def validate(self, data):
 
-        # Get appointment details
         patient = data.get(
             'patient',
             getattr(self.instance, 'patient', None)
@@ -39,7 +55,15 @@ class AppointmentSerializer(serializers.ModelSerializer):
             getattr(self.instance, 'status', 'PENDING')
         )
 
-        # Check appointment date
+        request = self.context.get('request')
+
+        # ADMIN must select a patient
+        if request and request.user.role == 'ADMIN' and not patient:
+            raise serializers.ValidationError(
+                "Please select a patient."
+            )
+
+        # Prevent past appointments
         if appointment_date and appointment_date < timezone.localdate():
             raise serializers.ValidationError(
                 "Appointment date cannot be in the past."
@@ -51,7 +75,6 @@ class AppointmentSerializer(serializers.ModelSerializer):
                 "This doctor is currently unavailable."
             )
 
-        # Prevent duplicate appointments
         if (
             doctor and patient and appointment_date
             and appointment_time and status != 'CANCELLED'

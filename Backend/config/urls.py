@@ -18,5 +18,7 @@ urlpatterns = [
 
     # Employees APIs
      path('api/employees/', include('employees.urls')),
-     
+
+    #Appointment APIs
+    path('api/appointments/', include('appointments.urls')),
 ]
