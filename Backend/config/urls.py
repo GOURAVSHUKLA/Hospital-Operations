@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-
+from django.urls import path, include
 
 urlpatterns = [
 
@@ -24,4 +24,7 @@ urlpatterns = [
 
     #Rooms APIs
     path('api/rooms/', include('rooms.urls')),
+
+    #Expenses APIs
+    path('api/expenses/', include('expenses.urls')),
 ]
