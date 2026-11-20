@@ -1,38 +1,23 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { getDashboardRoute } from "../../utils/dashboardRoutes";
 import "./Login.css";
 
 function Login() {
     const navigate = useNavigate();
-
-    // Authentication context
     const { login } = useAuth();
 
-    // Form states
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
-    // Password visibility
     const [showPassword, setShowPassword] = useState(false);
-
-    // Error and loading states
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    // Role-based dashboard routes
-    const dashboardRoutes = {
-        ADMIN: "/admin/dashboard",
-        DOCTOR: "/doctor/dashboard",
-        PATIENT: "/patient/dashboard",
-        STAFF: "/staff/dashboard",
-    };
-
-    // Handle login submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!username || !password) {
+        if (!username.trim() || !password) {
             setError("Please fill all the fields");
             return;
         }
@@ -41,20 +26,15 @@ function Login() {
             setError("");
             setLoading(true);
 
-            // Call Django JWT authentication
             const user = await login(username, password);
+            const dashboard = getDashboardRoute(user?.role);
 
-            // Get user role
-            const role = user.role?.toUpperCase();
-
-            // Find respective dashboard
-            const dashboard = dashboardRoutes[role];
-
-            if (dashboard) {
-                navigate(dashboard, { replace: true });
-            } else {
-                setError("Invalid user role. Please contact administrator.");
+            if (!dashboard) {
+                setError("Invalid user role. Contact administrator.");
+                return;
             }
+
+            navigate(dashboard, { replace: true });
 
         } catch (error) {
             const responseData = error.response?.data;
@@ -63,8 +43,10 @@ function Login() {
                 setError(responseData.detail);
             } else if (responseData?.non_field_errors) {
                 setError(responseData.non_field_errors[0]);
+            } else if (responseData) {
+                setError("Invalid username or password.");
             } else {
-                setError("Login failed. Please check your credentials.");
+                setError("Unable to connect to server. Please try again.");
             }
 
         } finally {
@@ -83,7 +65,6 @@ function Login() {
 
                 <form onSubmit={handleSubmit}>
 
-                    {/* Username Field */}
                     <div className="form-group">
                         <label>Username</label>
 
@@ -92,10 +73,10 @@ function Login() {
                             placeholder="Enter your username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
+                            autoComplete="username"
                         />
                     </div>
 
-                    {/* Password Field */}
                     <div className="form-group">
                         <label>Password</label>
 
@@ -105,6 +86,7 @@ function Login() {
                                 placeholder="Enter your password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                autoComplete="current-password"
                             />
 
                             <button
@@ -116,7 +98,6 @@ function Login() {
                         </div>
                     </div>
 
-                    {/* Remember Me */}
                     <div className="remember-section">
                         <label>
                             <input type="checkbox" />
@@ -128,14 +109,12 @@ function Login() {
                         </a>
                     </div>
 
-                    {/* Error Message */}
                     {error && (
                         <p className="error-message">
                             {error}
                         </p>
                     )}
 
-                    {/* Login Button */}
                     <button
                         type="submit"
                         className="login-button"

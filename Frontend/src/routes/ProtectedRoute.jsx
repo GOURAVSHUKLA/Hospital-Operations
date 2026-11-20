@@ -1,40 +1,32 @@
 import { Navigate, Outlet } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import { useAuth } from "../context/AuthContext";
+import { getDashboardRoute } from "../utils/dashboardRoutes";
 
-const ProtectedRoute = ({ allowedRoles = [] }) => {
-    const { user, isAuthenticated, loading } = useAuth();
+function ProtectedRoute({ allowedRoles = [] }) {
+    const { isAuthenticated, loading, user } = useAuth();
 
     if (loading) {
         return <div>Loading...</div>;
     }
 
-    // Check whether user is logged in
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;
     }
 
-    // Check whether user has permission
-    if (
-        allowedRoles.length > 0 &&
-        !allowedRoles.includes(user?.role)
-    ) {
-        // Redirect user to their own dashboard
-        const dashboardRoutes = {
-            ADMIN: "/admin/dashboard",
-            DOCTOR: "/doctor/dashboard",
-            PATIENT: "/patient/dashboard",
-            STAFF: "/staff/dashboard",
-        };
+    const role = typeof user?.role === "string"
+        ? user.role.trim().toUpperCase()
+        : "";
 
+    if (!allowedRoles.includes(role)) {
         return (
             <Navigate
-                to={dashboardRoutes[user?.role] || "/login"}
+                to={getDashboardRoute(role) ?? "/login"}
                 replace
             />
         );
     }
 
     return <Outlet />;
-};
+}
 
 export default ProtectedRoute;
