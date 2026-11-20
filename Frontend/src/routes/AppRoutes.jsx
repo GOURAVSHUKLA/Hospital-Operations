@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Authentication
 import Login from "../pages/auth/Login";
@@ -59,94 +59,101 @@ import EditBill from "../pages/finance/bills/EditBill";
 import BillDetails from "../pages/finance/bills/BillDetails";
 import AddPayment from "../pages/finance/bills/AddPayment";
 
-// Notification
-import NotificationList from '../pages/notifications/NotificationList';
+// Notifications
+import NotificationList from "../pages/notifications/NotificationList";
 
 // Settings
-import Settings from '../pages/settings/Settings';
-
+import Settings from "../pages/settings/Settings";
 
 // Layout
 import AdminLayout from "../components/layout/AdminLayout";
 
 function AppRoutes() {
-  return (
-    <BrowserRouter>
-      <Routes>
+    return (
+        <BrowserRouter>
+            <Routes>
 
-        {/* Login */}
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
+                {/* Login */}
+                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Login />} />
 
-        {/* Admin Layout */}
-        <Route element={<ProtectedRoute />}>
-        <Route path="/admin" element={<AdminLayout />}>
+                {/* ADMIN ROUTES */}
+                <Route element={<ProtectedRoute allowedRoles={["ADMIN"]} />}>
+                    <Route path="/admin" element={<AdminLayout />}>
 
-          {/* Dashboard */}
-          <Route path="dashboard" element={<Dashboard />} />
+                        {/* Dashboard */}
+                        <Route path="dashboard" element={<Dashboard />} />
 
-          {/* Doctors */}
-          <Route path="doctors" element={<DoctorList />} />
-          <Route path="doctors/add" element={<AddDoctor />} />
-          <Route path="doctors/edit/:id" element={<EditDoctor />} />
-          <Route path="doctors/details/:id" element={<DoctorDetails />} />
-          <Route path="doctors/availability" element={<DoctorAvailability />} />
+                        {/* Doctors */}
+                        <Route path="doctors" element={<DoctorList />} />
+                        <Route path="doctors/add" element={<AddDoctor />} />
+                        <Route path="doctors/edit/:id" element={<EditDoctor />} />
+                        <Route path="doctors/details/:id" element={<DoctorDetails />} />
+                        <Route path="doctors/availability" element={<DoctorAvailability />} />
 
-          {/* Patients */}
-          <Route path="patients" element={<PatientList />} />
-          <Route path="patients/add" element={<AddPatient />} />
-          <Route path="patients/edit/:id" element={<EditPatient />} />
-          <Route path="patients/details/:id" element={<PatientDetails />} />
+                        {/* Patients */}
+                        <Route path="patients" element={<PatientList />} />
+                        <Route path="patients/add" element={<AddPatient />} />
+                        <Route path="patients/edit/:id" element={<EditPatient />} />
+                        <Route path="patients/details/:id" element={<PatientDetails />} />
 
-          {/* Employees */}
-          <Route path="employees" element={<EmployeeList />} />
-          <Route path="employees/add" element={<AddEmployee />} />
-          <Route path="employees/edit/:id" element={<EditEmployee />} />
-          <Route path="employees/details/:id" element={<EmployeeDetails />} />
+                        {/* Employees */}
+                        <Route path="employees" element={<EmployeeList />} />
+                        <Route path="employees/add" element={<AddEmployee />} />
+                        <Route path="employees/edit/:id" element={<EditEmployee />} />
+                        <Route path="employees/details/:id" element={<EmployeeDetails />} />
 
-          {/* Appointments */}
-          <Route path="appointments" element={<AppointmentList />} />
-          <Route path="appointments/add" element={<AddAppointment />} />
-          <Route path="appointments/edit/:id" element={<EditAppointment />} />
-          <Route path="appointments/details/:id" element={<AppointmentDetails />} />
+                        {/* Appointments */}
+                        <Route path="appointments" element={<AppointmentList />} />
+                        <Route path="appointments/add" element={<AddAppointment />} />
+                        <Route path="appointments/edit/:id" element={<EditAppointment />} />
+                        <Route path="appointments/details/:id" element={<AppointmentDetails />} />
 
-          {/* Rooms & Beds */}
-          <Route path="rooms" element={<RoomList />} />
-          <Route path="rooms/add" element={<AddRoom />} />
-          <Route path="rooms/edit/:id" element={<EditRoom />} />
-          <Route path="rooms/details/:id" element={<RoomDetails />} />
+                        {/* Rooms & Beds */}
+                        <Route path="rooms" element={<RoomList />} />
+                        <Route path="rooms/add" element={<AddRoom />} />
+                        <Route path="rooms/edit/:id" element={<EditRoom />} />
+                        <Route path="rooms/details/:id" element={<RoomDetails />} />
 
-          {/* Emergency */}
-          <Route path="emergency" element={<EmergencyList />} />
-          <Route path="emergency/add" element={<AddEmergency />} />
-          <Route path="emergency/edit/:id" element={<EditEmergency />} />
-          <Route path="emergency/details/:id" element={<EmergencyDetails />} />
+                        {/* Emergency */}
+                        <Route path="emergency" element={<EmergencyList />} />
+                        <Route path="emergency/add" element={<AddEmergency />} />
+                        <Route path="emergency/edit/:id" element={<EditEmergency />} />
+                        <Route path="emergency/details/:id" element={<EmergencyDetails />} />
 
-          {/* Finance */}
-          <Route path="finance" element={<FinanceDashboard />} />
-          <Route path="finance/transactions" element={<FinanceList />} />
-          <Route path="finance/add" element={<AddTransaction />} />
-          <Route path="finance/edit/:id" element={<EditTransaction />} />
-          <Route path="finance/details/:id" element={<TransactionDetails />} />
+                        {/* Finance */}
+                        <Route path="finance" element={<FinanceDashboard />} />
+                        <Route path="finance/transactions" element={<FinanceList />} />
+                        <Route path="finance/add" element={<AddTransaction />} />
+                        <Route path="finance/edit/:id" element={<EditTransaction />} />
+                        <Route path="finance/details/:id" element={<TransactionDetails />} />
 
-          {/* Bills & Payments */}
-          <Route path="finance/bills" element={<BillsDashboard />} />
-          <Route path="finance/bills/list" element={<BillList />} />
-          <Route path="finance/bills/add" element={<AddBill />} />
-          <Route path="finance/bills/edit/:id" element={<EditBill />} />
-          <Route path="finance/bills/details/:id" element={<BillDetails />} />
-          <Route path="finance/bills/payment/:id" element={<AddPayment />} />
-          
-          {/* Notification */}
-          <Route path="notifications" element={<NotificationList />} />
+                        {/* Bills & Payments */}
+                        <Route path="finance/bills" element={<BillsDashboard />} />
+                        <Route path="finance/bills/list" element={<BillList />} />
+                        <Route path="finance/bills/add" element={<AddBill />} />
+                        <Route path="finance/bills/edit/:id" element={<EditBill />} />
+                        <Route path="finance/bills/details/:id" element={<BillDetails />} />
+                        <Route path="finance/bills/payment/:id" element={<AddPayment />} />
 
-          {/* Settings */}
-          <Route path="settings" element={<Settings />} />
-             </Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+                        {/* Notifications */}
+                        <Route path="notifications" element={<NotificationList />} />
+
+                        {/* Settings */}
+                        <Route path="settings" element={<Settings />} />
+
+                    </Route>
+                </Route>
+
+                {/* Unknown routes */}
+                <Route
+                    path="*"
+                    element={<Navigate to="/login" replace />}
+                />
+
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default AppRoutes;
